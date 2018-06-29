@@ -1,0 +1,1722 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="gserverModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adaptors">
+          <Key>
+            <PropertyRef Name="AdaptorID" />
+          </Key>
+          <Property Name="AdaptorName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="AdaptorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="alarms">
+          <Key>
+            <PropertyRef Name="AlarmID" />
+          </Key>
+          <Property Name="AlarmDescription" Type="tinytext" />
+          <Property Name="AlarmSource" Type="int" />
+          <Property Name="AlarmType" Type="int" />
+          <Property Name="AlarmAction" Type="int" />
+          <Property Name="AlarmWindow" Type="int" />
+          <Property Name="AlarmDevice" Type="int" />
+          <Property Name="AlarmValue" Type="double" />
+          <Property Name="AlarmDateTime" Type="datetime" Precision="0" />
+          <Property Name="AlarmImportDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="AlarmHeader" Type="text" />
+          <Property Name="AlarmLog" Type="tinytext" />
+          <Property Name="AlarmAck" Type="uint" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="AlarmID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="apps">
+          <Key>
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="AppEvent" Type="tinyint" Nullable="false" />
+          <Property Name="AppType" Type="tinyint" />
+          <Property Name="AppName" Type="varchar" MaxLength="32" />
+          <Property Name="AppThreadID" Type="int" />
+          <Property Name="AppUser" Type="varchar" MaxLength="128" />
+          <Property Name="AppDate" Type="datetime" Precision="0" />
+          <Property Name="AppVersion" Type="varchar" MaxLength="32" />
+          <Property Name="AppInfo" Type="text" />
+          <Property Name="AppID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="auxtable">
+          <Key>
+            <PropertyRef Name="AuxID" />
+          </Key>
+          <Property Name="AuxHeartBeat" Type="tinyint" Nullable="false" />
+          <Property Name="AuxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bussensors">
+          <Key>
+            <PropertyRef Name="BusSensorID" />
+          </Key>
+          <Property Name="BusSensorName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="BusSensorID" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'def.gserver.connecteddevices' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="connecteddevices">
+          <Property Name="ConnectedDeviceID" Type="int" />
+          <Property Name="ConnectedDeviceIP" Type="varchar" MaxLength="32" />
+          <Property Name="ConnectedDeviceSN" Type="varchar" MaxLength="32" />
+          <Property Name="ConnectedDevicePWD" Type="varchar" MaxLength="32" />
+          <Property Name="ConnectedDeviceLogDate" Type="datetime" Precision="0" />
+          <Property Name="ConnectedDevicePeer" Type="int" />
+          <Property Name="ConnectedDeviceNet" Type="varchar" MaxLength="32" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'def.gserver.connectedusers' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="connectedusers">
+          <Property Name="ConnectedUserID" Type="int" />
+          <Property Name="ConnectedUserIP" Type="varchar" MaxLength="32" />
+          <Property Name="ConnectedUserSN" Type="varchar" MaxLength="32" />
+          <Property Name="ConnectedUserPWD" Type="varchar" MaxLength="32" />
+          <Property Name="ConnectedUserLogDate" Type="datetime" Precision="0" />
+          <Property Name="ConnectedUserPeer" Type="int" />
+          <Property Name="ConnectedUserNet" Type="varchar" MaxLength="32" />
+        </EntityType>-->
+        <EntityType Name="connections">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+          </Key>
+          <Property Name="DeviceSN" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="ConnectionOrigin" Type="tinyint" Nullable="false" />
+          <Property Name="ConnectionEvent" Type="tinyint" Nullable="false" />
+          <Property Name="ConnectionDate" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="ConnectionDuration" Type="int" />
+          <Property Name="ConnectionBytesReceived" Type="int" />
+          <Property Name="ConnectionBytesSent" Type="int" />
+          <Property Name="ConnectionIndex" Type="int" Nullable="false" />
+          <Property Name="ConnectionIP" Type="varchar" MaxLength="15" />
+          <Property Name="ConnectionInfo" Type="text" />
+          <Property Name="ConnectionTotal" Type="int" />
+          <Property Name="ConnectionFld1" Type="tinytext" />
+          <Property Name="ConnectionFld2" Type="tinytext" />
+          <Property Name="ConnectionFld3" Type="tinytext" />
+          <Property Name="ConnectionFld4" Type="tinytext" />
+          <Property Name="ConnectionFld5" Type="tinytext" />
+          <Property Name="ConnectionFld6" Type="tinytext" />
+          <Property Name="ConnectionFld7" Type="tinytext" />
+          <Property Name="ConnectionFld8" Type="tinytext" />
+          <Property Name="ConnectionFld9" Type="tinytext" />
+          <Property Name="ConnectionFld10" Type="tinytext" />
+          <Property Name="ConnectionFld11" Type="tinytext" />
+          <Property Name="ConnectionFld12" Type="tinytext" />
+          <Property Name="ConnectionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="data">
+          <Key>
+            <PropertyRef Name="DataDateTime" />
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="DataIndex" Type="tinytext" />
+          <Property Name="DataDateTime" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="DataInterval" Type="float" Nullable="false" />
+          <Property Name="FileID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="Data2av" Type="double" />
+          <Property Name="Data3MODBUS" Type="double" />
+          <Property Name="Data4MODBUS" Type="double" />
+          <Property Name="Data5MODBUS" Type="double" />
+          <Property Name="Data6MODBUS" Type="double" />
+          <Property Name="Data7MODBUS" Type="double" />
+          <Property Name="Data8MODBUS" Type="double" />
+          <Property Name="Data9MODBUS" Type="double" />
+          <Property Name="Data10MODBUS" Type="double" />
+          <Property Name="Data11MODBUS" Type="double" />
+          <Property Name="Data13av" Type="double" />
+          <Property Name="Data14av" Type="double" />
+          <Property Name="Data13min" Type="double" />
+          <Property Name="Data13max" Type="double" />
+          <Property Name="Data13sdv" Type="double" />
+          <Property Name="Data15MODBUS" Type="double" />
+          <Property Name="Data16MODBUS" Type="double" />
+          <Property Name="Data17MODBUS" Type="double" />
+          <Property Name="Data18MODBUS" Type="double" />
+        </EntityType>
+        <EntityType Name="dbversions">
+          <Key>
+            <PropertyRef Name="DBVersionID" />
+          </Key>
+          <Property Name="DBVersionName" Type="varchar" MaxLength="128" />
+          <Property Name="DBVersionNumber" Type="varchar" MaxLength="128" />
+          <Property Name="DBVersionBeginDateTime" Type="datetime" Precision="0" />
+          <Property Name="DBVersionRecentDateTime" Type="datetime" Precision="0" />
+          <Property Name="DBVersionEndDateTime" Type="datetime" Precision="0" />
+          <Property Name="DBVersionUser" Type="varchar" MaxLength="128" />
+          <Property Name="DBVersionProcessed" Type="int" />
+          <Property Name="DBVersionExecuted" Type="int" />
+          <Property Name="DBVersionText" Type="text" />
+          <Property Name="DBVersionLog" Type="text" />
+          <Property Name="DBVersionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="devices">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DeviceSN" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="DeviceType" Type="tinyint" />
+          <Property Name="DeviceAttr" Type="tinyint" />
+          <Property Name="DeviceValidUntil" Type="date" />
+          <Property Name="DeviceField1" Type="varchar" MaxLength="64" />
+          <Property Name="DeviceField2" Type="varchar" MaxLength="64" />
+          <Property Name="DeviceField3" Type="varchar" MaxLength="64" />
+          <Property Name="DeviceField4" Type="varchar" MaxLength="64" />
+          <Property Name="DeviceField5" Type="varchar" MaxLength="64" />
+          <Property Name="DeviceField6" Type="varchar" MaxLength="64" />
+          <Property Name="DeviceField7" Type="varchar" MaxLength="64" />
+          <Property Name="DeviceField8" Type="varchar" MaxLength="64" />
+          <Property Name="DeviceBytesReceived" Type="int" />
+          <Property Name="DeviceBytesReceivedLimit" Type="int" />
+          <Property Name="DeviceBytesSent" Type="int" />
+          <Property Name="DeviceBytesSentLimit" Type="int" />
+          <Property Name="DeviceTime" Type="int" />
+          <Property Name="DeviceTimeLimit" Type="int" />
+          <Property Name="DeviceCreationDate" Type="datetime" Precision="0" />
+          <Property Name="DeviceInfo" Type="text" />
+          <Property Name="DeviceBuffer" Type="blob" />
+          <Property Name="DeviceData" Type="int" />
+          <Property Name="DeviceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="deviceslocations">
+          <Key>
+            <PropertyRef Name="DevIdLocId" />
+          </Key>
+          <Property Name="DevIdLocId" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceSN" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="LocationSN" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="equipments">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentModelID" Type="int" />
+          <Property Name="EquipmentCategoryID" Type="int" />
+          <Property Name="SerialNumber" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Region" Type="tinytext" />
+          <Property Name="InventoryNumber" Type="tinytext" />
+          <Property Name="EquipmentInfo" Type="text" />
+          <Property Name="EquipmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="equipmentusages">
+          <Key>
+            <PropertyRef Name="EquipmentUsageID" />
+          </Key>
+          <Property Name="EquipmentUsageName" Type="tinytext" />
+          <Property Name="EquipmentUsageCode" Type="tinytext" />
+          <Property Name="EquipmentUsageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="files">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="FileName" Type="tinytext" />
+          <Property Name="FileSN" Type="tinytext" />
+          <Property Name="FileSize" Type="int" />
+          <Property Name="FileDate" Type="datetime" Precision="0" />
+          <Property Name="FileDataDateStart" Type="datetime" Precision="0" />
+          <Property Name="FileDataDateEnd" Type="datetime" Precision="0" />
+          <Property Name="FileImportDate" Type="datetime" Precision="0" />
+          <Property Name="FileRecords" Type="int" />
+          <Property Name="FileHeader" Type="mediumtext" />
+          <Property Name="FileLog" Type="text" />
+          <Property Name="FileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="filters">
+          <Key>
+            <PropertyRef Name="FilterID" />
+          </Key>
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="EquipmentUsageID" Type="int" />
+          <Property Name="FilterComparison1" Type="tinyint" />
+          <Property Name="FilterValue1" Type="float" />
+          <Property Name="FilterOperator" Type="tinyint" />
+          <Property Name="FilterComparison2" Type="tinyint" />
+          <Property Name="FilterValue2" Type="float" />
+          <Property Name="FilterDateFrom" Type="date" />
+          <Property Name="FilterDateTo" Type="date" />
+          <Property Name="FilterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="locationequipment">
+          <Key>
+            <PropertyRef Name="LocationEquipID" />
+          </Key>
+          <Property Name="EquipmentUsageID" Type="int" />
+          <Property Name="EquipmentID" Type="int" />
+          <Property Name="ImageID" Type="int" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="LocationEquipDateAdded" Type="datetime" Precision="0" />
+          <Property Name="LocationEquipDateRemoved" Type="datetime" Precision="0" />
+          <Property Name="LocationEquipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="locationflags">
+          <Key>
+            <PropertyRef Name="LocationFlagID" />
+          </Key>
+          <Property Name="LocationFlagName" Type="tinytext" />
+          <Property Name="LocationFlagCode" Type="tinytext" />
+          <Property Name="LocationFlagColor" Type="int" />
+          <Property Name="LocationFlagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="locations">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="Region" Type="tinytext" />
+          <Property Name="LocationName" Type="tinytext" />
+          <Property Name="LocationAddress" Type="tinytext" />
+          <Property Name="LocationLongitude" Type="tinytext" />
+          <Property Name="LocationLatitude" Type="tinytext" />
+          <Property Name="LocationPhone" Type="tinytext" />
+          <Property Name="LocationDataPhone" Type="tinytext" />
+          <Property Name="LocationSiteName" Type="tinytext" />
+          <Property Name="LocationUsageID" Type="int" />
+          <Property Name="LocationStatusID" Type="int" />
+          <Property Name="LocationComStatusID" Type="int" />
+          <Property Name="LocationStatusDate" Type="datetime" Precision="0" />
+          <Property Name="LocationFlagID" Type="int" />
+          <Property Name="LocationFlagDate" Type="datetime" Precision="0" />
+          <Property Name="LocationPath" Type="tinytext" />
+          <Property Name="LocationInfo" Type="text" />
+          <Property Name="Graphic" Type="tinytext" />
+          <Property Name="ImageID" Type="int" />
+          <Property Name="LocationChannels" Type="tinytext" />
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationSN" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="DeviceSN" Type="varchar" MaxLength="8" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="locationstatuses">
+          <Key>
+            <PropertyRef Name="LocationStatusID" />
+          </Key>
+          <Property Name="LocationStatusName" Type="tinytext" />
+          <Property Name="LocationStatusCode" Type="tinytext" />
+          <Property Name="LocationStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="measbussensors">
+          <Key>
+            <PropertyRef Name="MeasBusSensorID" />
+          </Key>
+          <Property Name="MeasurementID" Type="int" Nullable="false" />
+          <Property Name="BusSensorID" Type="int" Nullable="false" />
+          <Property Name="MeasBusSensorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="meassensors">
+          <Key>
+            <PropertyRef Name="MeasSensorID" />
+          </Key>
+          <Property Name="MeasurementID" Type="int" Nullable="false" />
+          <Property Name="SensorID" Type="int" Nullable="false" />
+          <Property Name="MeasSensorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="measunits">
+          <Key>
+            <PropertyRef Name="MeasUnitID" />
+          </Key>
+          <Property Name="MeasurementID" Type="int" Nullable="false" />
+          <Property Name="UnitID" Type="int" Nullable="false" />
+          <Property Name="MeasUnitID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="measurements">
+          <Key>
+            <PropertyRef Name="MeasurementID" />
+          </Key>
+          <Property Name="MeasurementName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="MeasurementID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="RecipID" Type="int" Nullable="false" />
+          <Property Name="AlarmID" Type="int" Nullable="false" />
+          <Property Name="MessageEmailStatus" Type="int" Nullable="false" />
+          <Property Name="MessageSMSStatus" Type="int" Nullable="false" />
+          <Property Name="MessageDateTime" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="MessageDateTimeRetry" Type="datetime" Precision="0" />
+          <Property Name="MessageLog" Type="tinytext" />
+          <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="recips">
+          <Key>
+            <PropertyRef Name="RecipID" />
+          </Key>
+          <Property Name="RecipName" Type="tinytext" />
+          <Property Name="RecipDateTime" Type="datetime" Precision="0" />
+          <Property Name="RecipEmail" Type="tinytext" />
+          <Property Name="RecipSMS" Type="tinytext" />
+          <Property Name="RecipStatus" Type="int" />
+          <Property Name="RecipLog" Type="tinytext" />
+          <Property Name="RecipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'def.gserver.removedevices' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="removedevices">
+          <Property Name="ConnectedDeviceID" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'def.gserver.removeusers' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="removeusers">
+          <Property Name="ConnectedUserID" Type="int" />
+        </EntityType>-->
+        <EntityType Name="sensadaptors">
+          <Key>
+            <PropertyRef Name="SensAdaptorID" />
+          </Key>
+          <Property Name="SensorID" Type="int" Nullable="false" />
+          <Property Name="AdaptorID" Type="int" Nullable="false" />
+          <Property Name="SensAdaptorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sensors">
+          <Key>
+            <PropertyRef Name="SensorID" />
+          </Key>
+          <Property Name="SensorName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="SensorID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sites">
+          <Key>
+            <PropertyRef Name="siteId" />
+          </Key>
+          <Property Name="siteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="siteName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="units">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Name="UnitName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UnitID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="updates">
+          <Key>
+            <PropertyRef Name="UpdateID" />
+          </Key>
+          <Property Name="DeviceSN" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="UpdateName" Type="tinytext" Nullable="false" />
+          <Property Name="UpdateType" Type="tinyint" />
+          <Property Name="UpdateStatus" Type="tinyint" />
+          <Property Name="UpdateCreationDate" Type="datetime" Precision="0" />
+          <Property Name="UpdateStatusDate" Type="datetime" Precision="0" />
+          <Property Name="UpdateInfo" Type="text" />
+          <Property Name="UpdateField1" Type="varchar" MaxLength="64" />
+          <Property Name="UpdateField2" Type="varchar" MaxLength="64" />
+          <Property Name="UpdateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UserAddress" Type="varchar" MaxLength="32" />
+          <Property Name="UserCountry" Type="varchar" MaxLength="32" />
+          <Property Name="UserTel" Type="varchar" MaxLength="32" />
+          <Property Name="UserEmail" Type="varchar" MaxLength="32" />
+          <Property Name="UserCreationDate" Type="datetime" Precision="0" />
+          <Property Name="UserField1" Type="varchar" MaxLength="64" />
+          <Property Name="UserField2" Type="varchar" MaxLength="64" />
+          <Property Name="UserField3" Type="int" />
+          <Property Name="UserField4" Type="int" />
+          <Property Name="UserInfo" Type="text" />
+          <Property Name="UserAttr" Type="tinyint" />
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userslocations">
+          <Key>
+            <PropertyRef Name="UserLocationId" />
+          </Key>
+          <Property Name="UserLocationId" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="LocationID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Precision="0" Nullable="false" />
+        </EntityType>
+        <Association Name="AlarmsToLoc">
+          <End Role="locations" Type="Self.locations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="alarms" Type="Self.alarms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="alarms">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'ConnectionsToDevices' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="ConnectionsToDevices" />-->
+        <Association Name="DataToFiles">
+          <End Role="files" Type="Self.files" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="data" Type="Self.data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="files">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="data">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DevicesToUsers">
+          <End Role="users" Type="Self.users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="devices" Type="Self.devices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="devices">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_deviceslocations_devices' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_deviceslocations_devices" />-->
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_deviceslocations_locations' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_deviceslocations_locations" />-->
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_equipments_Devices_SN' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_equipments_Devices_SN" />-->
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_locations_devices' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_locations_devices" />-->
+        <Association Name="FK_locations_UserId">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="locations" Type="Self.locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="locations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userslocations_locations">
+          <End Role="locations" Type="Self.locations" Multiplicity="1" />
+          <End Role="userslocations" Type="Self.userslocations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="userslocations">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userslocations_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="userslocations" Type="Self.userslocations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="userslocations">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LocsToData">
+          <End Role="locations" Type="Self.locations" Multiplicity="1" />
+          <End Role="data" Type="Self.data" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="data">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LocsToFiles">
+          <End Role="locations" Type="Self.locations" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="files" Type="Self.files" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="locations">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="files">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MsgsToRecips">
+          <End Role="recips" Type="Self.recips" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="messages" Type="Self.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recips">
+              <PropertyRef Name="RecipID" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="RecipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'UpdatesToDevices' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="UpdatesToDevices" />-->
+        <EntityContainer Name="gserverModelStoreContainer">
+          <EntitySet Name="adaptors" EntityType="Self.adaptors" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="alarms" EntityType="Self.alarms" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="apps" EntityType="Self.apps" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="auxtable" EntityType="Self.auxtable" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="bussensors" EntityType="Self.bussensors" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="connections" EntityType="Self.connections" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="data" EntityType="Self.data" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="dbversions" EntityType="Self.dbversions" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="devices" EntityType="Self.devices" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="deviceslocations" EntityType="Self.deviceslocations" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="equipments" EntityType="Self.equipments" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="equipmentusages" EntityType="Self.equipmentusages" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="files" EntityType="Self.files" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="filters" EntityType="Self.filters" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="locationequipment" EntityType="Self.locationequipment" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="locationflags" EntityType="Self.locationflags" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="locations" EntityType="Self.locations" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="locationstatuses" EntityType="Self.locationstatuses" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="measbussensors" EntityType="Self.measbussensors" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="meassensors" EntityType="Self.meassensors" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="measunits" EntityType="Self.measunits" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="measurements" EntityType="Self.measurements" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="messages" EntityType="Self.messages" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="recips" EntityType="Self.recips" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="sensadaptors" EntityType="Self.sensadaptors" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="sensors" EntityType="Self.sensors" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="sites" EntityType="Self.sites" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="units" EntityType="Self.units" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="updates" EntityType="Self.updates" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="gserver" store:Type="Tables" />
+          <EntitySet Name="userslocations" EntityType="Self.userslocations" Schema="gserver" store:Type="Tables" />
+          <AssociationSet Name="AlarmsToLoc" Association="Self.AlarmsToLoc">
+            <End Role="locations" EntitySet="locations" />
+            <End Role="alarms" EntitySet="alarms" />
+          </AssociationSet>
+          <AssociationSet Name="DataToFiles" Association="Self.DataToFiles">
+            <End Role="files" EntitySet="files" />
+            <End Role="data" EntitySet="data" />
+          </AssociationSet>
+          <AssociationSet Name="DevicesToUsers" Association="Self.DevicesToUsers">
+            <End Role="users" EntitySet="users" />
+            <End Role="devices" EntitySet="devices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_locations_UserId" Association="Self.FK_locations_UserId">
+            <End Role="users" EntitySet="users" />
+            <End Role="locations" EntitySet="locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userslocations_locations" Association="Self.FK_userslocations_locations">
+            <End Role="locations" EntitySet="locations" />
+            <End Role="userslocations" EntitySet="userslocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userslocations_users" Association="Self.FK_userslocations_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="userslocations" EntitySet="userslocations" />
+          </AssociationSet>
+          <AssociationSet Name="LocsToData" Association="Self.LocsToData">
+            <End Role="locations" EntitySet="locations" />
+            <End Role="data" EntitySet="data" />
+          </AssociationSet>
+          <AssociationSet Name="LocsToFiles" Association="Self.LocsToFiles">
+            <End Role="locations" EntitySet="locations" />
+            <End Role="files" EntitySet="files" />
+          </AssociationSet>
+          <AssociationSet Name="MsgsToRecips" Association="Self.MsgsToRecips">
+            <End Role="recips" EntitySet="recips" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="gserverModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="gserverEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adaptors" EntityType="gserverModel.adaptor" />
+          <EntitySet Name="alarms" EntityType="gserverModel.alarm" />
+          <EntitySet Name="apps" EntityType="gserverModel.app" />
+          <EntitySet Name="auxtables" EntityType="gserverModel.auxtable" />
+          <EntitySet Name="bussensors" EntityType="gserverModel.bussensor" />
+          <EntitySet Name="connections" EntityType="gserverModel.connection" />
+          <EntitySet Name="data" EntityType="gserverModel.datum" />
+          <EntitySet Name="dbversions" EntityType="gserverModel.dbversion" />
+          <EntitySet Name="devices" EntityType="gserverModel.device" />
+          <EntitySet Name="deviceslocations" EntityType="gserverModel.deviceslocation" />
+          <EntitySet Name="equipments" EntityType="gserverModel.equipment" />
+          <EntitySet Name="equipmentusages" EntityType="gserverModel.equipmentusage" />
+          <EntitySet Name="files" EntityType="gserverModel.file" />
+          <EntitySet Name="filters" EntityType="gserverModel.filter" />
+          <EntitySet Name="locationequipments" EntityType="gserverModel.locationequipment" />
+          <EntitySet Name="locationflags" EntityType="gserverModel.locationflag" />
+          <EntitySet Name="locations" EntityType="gserverModel.location" />
+          <EntitySet Name="locationstatuses" EntityType="gserverModel.locationstatus" />
+          <EntitySet Name="measbussensors" EntityType="gserverModel.measbussensor" />
+          <EntitySet Name="meassensors" EntityType="gserverModel.meassensor" />
+          <EntitySet Name="measunits" EntityType="gserverModel.measunit" />
+          <EntitySet Name="measurements" EntityType="gserverModel.measurement" />
+          <EntitySet Name="messages" EntityType="gserverModel.message" />
+          <EntitySet Name="recips" EntityType="gserverModel.recip" />
+          <EntitySet Name="sensadaptors" EntityType="gserverModel.sensadaptor" />
+          <EntitySet Name="sensors" EntityType="gserverModel.sensor" />
+          <EntitySet Name="sites" EntityType="gserverModel.site" />
+          <EntitySet Name="units" EntityType="gserverModel.unit" />
+          <EntitySet Name="updates" EntityType="gserverModel.update" />
+          <EntitySet Name="users" EntityType="gserverModel.user" />
+          <EntitySet Name="userslocations" EntityType="gserverModel.userslocation" />
+          <AssociationSet Name="AlarmsToLoc" Association="gserverModel.AlarmsToLoc">
+            <End Role="location" EntitySet="locations" />
+            <End Role="alarm" EntitySet="alarms" />
+          </AssociationSet>
+          <AssociationSet Name="DataToFiles" Association="gserverModel.DataToFiles">
+            <End Role="file" EntitySet="files" />
+            <End Role="datum" EntitySet="data" />
+          </AssociationSet>
+          <AssociationSet Name="LocsToData" Association="gserverModel.LocsToData">
+            <End Role="location" EntitySet="locations" />
+            <End Role="datum" EntitySet="data" />
+          </AssociationSet>
+          <AssociationSet Name="DevicesToUsers" Association="gserverModel.DevicesToUsers">
+            <End Role="user" EntitySet="users" />
+            <End Role="device" EntitySet="devices" />
+          </AssociationSet>
+          <AssociationSet Name="LocsToFiles" Association="gserverModel.LocsToFiles">
+            <End Role="location" EntitySet="locations" />
+            <End Role="file" EntitySet="files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_locations_UserId" Association="gserverModel.FK_locations_UserId">
+            <End Role="user" EntitySet="users" />
+            <End Role="location" EntitySet="locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userslocations_locations" Association="gserverModel.FK_userslocations_locations">
+            <End Role="location" EntitySet="locations" />
+            <End Role="userslocation" EntitySet="userslocations" />
+          </AssociationSet>
+          <AssociationSet Name="MsgsToRecips" Association="gserverModel.MsgsToRecips">
+            <End Role="recip" EntitySet="recips" />
+            <End Role="message" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userslocations_users" Association="gserverModel.FK_userslocations_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="userslocation" EntitySet="userslocations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="adaptor">
+          <Key>
+            <PropertyRef Name="AdaptorID" />
+          </Key>
+          <Property Name="AdaptorName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="AdaptorID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="alarm">
+          <Key>
+            <PropertyRef Name="AlarmID" />
+          </Key>
+          <Property Name="AlarmDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AlarmSource" Type="Int32" />
+          <Property Name="AlarmType" Type="Int32" />
+          <Property Name="AlarmAction" Type="Int32" />
+          <Property Name="AlarmWindow" Type="Int32" />
+          <Property Name="AlarmDevice" Type="Int32" />
+          <Property Name="AlarmValue" Type="Double" />
+          <Property Name="AlarmDateTime" Type="DateTime" />
+          <Property Name="AlarmImportDate" Type="DateTime" Nullable="false" />
+          <Property Name="AlarmHeader" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="AlarmLog" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AlarmAck" Type="Int64" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="AlarmID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="location" Relationship="gserverModel.AlarmsToLoc" FromRole="alarm" ToRole="location" />
+        </EntityType>
+        <EntityType Name="app">
+          <Key>
+            <PropertyRef Name="AppID" />
+          </Key>
+          <Property Name="AppEvent" Type="SByte" Nullable="false" />
+          <Property Name="AppType" Type="SByte" />
+          <Property Name="AppName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="AppThreadID" Type="Int32" />
+          <Property Name="AppUser" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="AppDate" Type="DateTime" />
+          <Property Name="AppVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="AppInfo" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="AppID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="auxtable">
+          <Key>
+            <PropertyRef Name="AuxID" />
+          </Key>
+          <Property Name="AuxHeartBeat" Type="SByte" Nullable="false" />
+          <Property Name="AuxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="bussensor">
+          <Key>
+            <PropertyRef Name="BusSensorID" />
+          </Key>
+          <Property Name="BusSensorName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="BusSensorID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="connection">
+          <Key>
+            <PropertyRef Name="ConnectionID" />
+          </Key>
+          <Property Name="DeviceSN" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionOrigin" Type="SByte" Nullable="false" />
+          <Property Name="ConnectionEvent" Type="SByte" Nullable="false" />
+          <Property Name="ConnectionDate" Type="DateTime" Nullable="false" />
+          <Property Name="ConnectionDuration" Type="Int32" />
+          <Property Name="ConnectionBytesReceived" Type="Int32" />
+          <Property Name="ConnectionBytesSent" Type="Int32" />
+          <Property Name="ConnectionIndex" Type="Int32" Nullable="false" />
+          <Property Name="ConnectionIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionInfo" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionTotal" Type="Int32" />
+          <Property Name="ConnectionFld1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld3" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld4" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld5" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld6" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld7" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld8" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld9" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld10" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld11" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionFld12" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ConnectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="datum">
+          <Key>
+            <PropertyRef Name="DataDateTime" />
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="DataIndex" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="DataDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="DataInterval" Type="Single" Nullable="false" />
+          <Property Name="FileID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="Data2av" Type="Double" />
+          <Property Name="Data3MODBUS" Type="Double" />
+          <Property Name="Data4MODBUS" Type="Double" />
+          <Property Name="Data5MODBUS" Type="Double" />
+          <Property Name="Data6MODBUS" Type="Double" />
+          <Property Name="Data7MODBUS" Type="Double" />
+          <Property Name="Data8MODBUS" Type="Double" />
+          <Property Name="Data9MODBUS" Type="Double" />
+          <Property Name="Data10MODBUS" Type="Double" />
+          <Property Name="Data11MODBUS" Type="Double" />
+          <Property Name="Data13av" Type="Double" />
+          <Property Name="Data14av" Type="Double" />
+          <Property Name="Data13min" Type="Double" />
+          <Property Name="Data13max" Type="Double" />
+          <Property Name="Data13sdv" Type="Double" />
+          <Property Name="Data15MODBUS" Type="Double" />
+          <Property Name="Data16MODBUS" Type="Double" />
+          <Property Name="Data17MODBUS" Type="Double" />
+          <Property Name="Data18MODBUS" Type="Double" />
+          <NavigationProperty Name="file" Relationship="gserverModel.DataToFiles" FromRole="datum" ToRole="file" />
+          <NavigationProperty Name="location" Relationship="gserverModel.LocsToData" FromRole="datum" ToRole="location" />
+        </EntityType>
+        <EntityType Name="dbversion">
+          <Key>
+            <PropertyRef Name="DBVersionID" />
+          </Key>
+          <Property Name="DBVersionName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DBVersionNumber" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DBVersionBeginDateTime" Type="DateTime" />
+          <Property Name="DBVersionRecentDateTime" Type="DateTime" />
+          <Property Name="DBVersionEndDateTime" Type="DateTime" />
+          <Property Name="DBVersionUser" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DBVersionProcessed" Type="Int32" />
+          <Property Name="DBVersionExecuted" Type="Int32" />
+          <Property Name="DBVersionText" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="DBVersionLog" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="DBVersionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="device">
+          <Key>
+            <PropertyRef Name="DeviceID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DeviceSN" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceType" Type="SByte" />
+          <Property Name="DeviceAttr" Type="SByte" />
+          <Property Name="DeviceValidUntil" Type="DateTime" />
+          <Property Name="DeviceField1" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceField2" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceField3" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceField4" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceField5" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceField6" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceField7" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceField8" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceBytesReceived" Type="Int32" />
+          <Property Name="DeviceBytesReceivedLimit" Type="Int32" />
+          <Property Name="DeviceBytesSent" Type="Int32" />
+          <Property Name="DeviceBytesSentLimit" Type="Int32" />
+          <Property Name="DeviceTime" Type="Int32" />
+          <Property Name="DeviceTimeLimit" Type="Int32" />
+          <Property Name="DeviceCreationDate" Type="DateTime" />
+          <Property Name="DeviceInfo" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceBuffer" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DeviceData" Type="Int32" />
+          <Property Name="DeviceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="user" Relationship="gserverModel.DevicesToUsers" FromRole="device" ToRole="user" />
+        </EntityType>
+        <EntityType Name="deviceslocation">
+          <Key>
+            <PropertyRef Name="DevIdLocId" />
+          </Key>
+          <Property Name="DevIdLocId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceSN" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LocationSN" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="equipment">
+          <Key>
+            <PropertyRef Name="EquipmentID" />
+          </Key>
+          <Property Name="EquipmentModelID" Type="Int32" />
+          <Property Name="EquipmentCategoryID" Type="Int32" />
+          <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="Region" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="InventoryNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EquipmentInfo" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="EquipmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="equipmentusage">
+          <Key>
+            <PropertyRef Name="EquipmentUsageID" />
+          </Key>
+          <Property Name="EquipmentUsageName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EquipmentUsageCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EquipmentUsageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="file">
+          <Key>
+            <PropertyRef Name="FileID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FileSN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="FileSize" Type="Int32" />
+          <Property Name="FileDate" Type="DateTime" />
+          <Property Name="FileDataDateStart" Type="DateTime" />
+          <Property Name="FileDataDateEnd" Type="DateTime" />
+          <Property Name="FileImportDate" Type="DateTime" />
+          <Property Name="FileRecords" Type="Int32" />
+          <Property Name="FileHeader" Type="String" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Name="FileLog" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="FileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="data" Relationship="gserverModel.DataToFiles" FromRole="file" ToRole="datum" />
+          <NavigationProperty Name="location" Relationship="gserverModel.LocsToFiles" FromRole="file" ToRole="location" />
+        </EntityType>
+        <EntityType Name="filter">
+          <Key>
+            <PropertyRef Name="FilterID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="EquipmentUsageID" Type="Int32" />
+          <Property Name="FilterComparison1" Type="SByte" />
+          <Property Name="FilterValue1" Type="Single" />
+          <Property Name="FilterOperator" Type="SByte" />
+          <Property Name="FilterComparison2" Type="SByte" />
+          <Property Name="FilterValue2" Type="Single" />
+          <Property Name="FilterDateFrom" Type="DateTime" />
+          <Property Name="FilterDateTo" Type="DateTime" />
+          <Property Name="FilterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="locationequipment">
+          <Key>
+            <PropertyRef Name="LocationEquipID" />
+          </Key>
+          <Property Name="EquipmentUsageID" Type="Int32" />
+          <Property Name="EquipmentID" Type="Int32" />
+          <Property Name="ImageID" Type="Int32" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="LocationEquipDateAdded" Type="DateTime" />
+          <Property Name="LocationEquipDateRemoved" Type="DateTime" />
+          <Property Name="LocationEquipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="locationflag">
+          <Key>
+            <PropertyRef Name="LocationFlagID" />
+          </Key>
+          <Property Name="LocationFlagName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationFlagCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationFlagColor" Type="Int32" />
+          <Property Name="LocationFlagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="Region" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationLongitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationLatitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationDataPhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationSiteName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationUsageID" Type="Int32" />
+          <Property Name="LocationStatusID" Type="Int32" />
+          <Property Name="LocationComStatusID" Type="Int32" />
+          <Property Name="LocationStatusDate" Type="DateTime" />
+          <Property Name="LocationFlagID" Type="Int32" />
+          <Property Name="LocationFlagDate" Type="DateTime" />
+          <Property Name="LocationPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationInfo" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Graphic" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ImageID" Type="Int32" />
+          <Property Name="LocationChannels" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationSN" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="DeviceSN" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="alarms" Relationship="gserverModel.AlarmsToLoc" FromRole="location" ToRole="alarm" />
+          <NavigationProperty Name="data" Relationship="gserverModel.LocsToData" FromRole="location" ToRole="datum" />
+          <NavigationProperty Name="files" Relationship="gserverModel.LocsToFiles" FromRole="location" ToRole="file" />
+          <NavigationProperty Name="user" Relationship="gserverModel.FK_locations_UserId" FromRole="location" ToRole="user" />
+          <NavigationProperty Name="userslocations" Relationship="gserverModel.FK_userslocations_locations" FromRole="location" ToRole="userslocation" />
+        </EntityType>
+        <EntityType Name="locationstatus">
+          <Key>
+            <PropertyRef Name="LocationStatusID" />
+          </Key>
+          <Property Name="LocationStatusName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationStatusCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="LocationStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="measbussensor">
+          <Key>
+            <PropertyRef Name="MeasBusSensorID" />
+          </Key>
+          <Property Name="MeasurementID" Type="Int32" Nullable="false" />
+          <Property Name="BusSensorID" Type="Int32" Nullable="false" />
+          <Property Name="MeasBusSensorID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="meassensor">
+          <Key>
+            <PropertyRef Name="MeasSensorID" />
+          </Key>
+          <Property Name="MeasurementID" Type="Int32" Nullable="false" />
+          <Property Name="SensorID" Type="Int32" Nullable="false" />
+          <Property Name="MeasSensorID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="measunit">
+          <Key>
+            <PropertyRef Name="MeasUnitID" />
+          </Key>
+          <Property Name="MeasurementID" Type="Int32" Nullable="false" />
+          <Property Name="UnitID" Type="Int32" Nullable="false" />
+          <Property Name="MeasUnitID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="measurement">
+          <Key>
+            <PropertyRef Name="MeasurementID" />
+          </Key>
+          <Property Name="MeasurementName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="MeasurementID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="message">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="RecipID" Type="Int32" Nullable="false" />
+          <Property Name="AlarmID" Type="Int32" Nullable="false" />
+          <Property Name="MessageEmailStatus" Type="Int32" Nullable="false" />
+          <Property Name="MessageSMSStatus" Type="Int32" Nullable="false" />
+          <Property Name="MessageDateTime" Type="DateTime" Nullable="false" />
+          <Property Name="MessageDateTimeRetry" Type="DateTime" />
+          <Property Name="MessageLog" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="recip" Relationship="gserverModel.MsgsToRecips" FromRole="message" ToRole="recip" />
+        </EntityType>
+        <EntityType Name="recip">
+          <Key>
+            <PropertyRef Name="RecipID" />
+          </Key>
+          <Property Name="RecipName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RecipDateTime" Type="DateTime" />
+          <Property Name="RecipEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RecipSMS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RecipStatus" Type="Int32" />
+          <Property Name="RecipLog" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RecipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="messages" Relationship="gserverModel.MsgsToRecips" FromRole="recip" ToRole="message" />
+        </EntityType>
+        <EntityType Name="sensadaptor">
+          <Key>
+            <PropertyRef Name="SensAdaptorID" />
+          </Key>
+          <Property Name="SensorID" Type="Int32" Nullable="false" />
+          <Property Name="AdaptorID" Type="Int32" Nullable="false" />
+          <Property Name="SensAdaptorID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sensor">
+          <Key>
+            <PropertyRef Name="SensorID" />
+          </Key>
+          <Property Name="SensorName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="SensorID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="site">
+          <Key>
+            <PropertyRef Name="siteId" />
+          </Key>
+          <Property Name="siteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="siteName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="unit">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UnitID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="update">
+          <Key>
+            <PropertyRef Name="UpdateID" />
+          </Key>
+          <Property Name="DeviceSN" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateType" Type="SByte" />
+          <Property Name="UpdateStatus" Type="SByte" />
+          <Property Name="UpdateCreationDate" Type="DateTime" />
+          <Property Name="UpdateStatusDate" Type="DateTime" />
+          <Property Name="UpdateInfo" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateField1" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateField2" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserAddress" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserCountry" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserTel" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserEmail" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UserCreationDate" Type="DateTime" />
+          <Property Name="UserField1" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="UserField2" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="UserField3" Type="Int32" />
+          <Property Name="UserField4" Type="Int32" />
+          <Property Name="UserInfo" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="UserAttr" Type="SByte" />
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="devices" Relationship="gserverModel.DevicesToUsers" FromRole="user" ToRole="device" />
+          <NavigationProperty Name="locations" Relationship="gserverModel.FK_locations_UserId" FromRole="user" ToRole="location" />
+          <NavigationProperty Name="userslocations" Relationship="gserverModel.FK_userslocations_users" FromRole="user" ToRole="userslocation" />
+        </EntityType>
+        <EntityType Name="userslocation">
+          <Key>
+            <PropertyRef Name="UserLocationId" />
+          </Key>
+          <Property Name="UserLocationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="LocationID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="location" Relationship="gserverModel.FK_userslocations_locations" FromRole="userslocation" ToRole="location" />
+          <NavigationProperty Name="user" Relationship="gserverModel.FK_userslocations_users" FromRole="userslocation" ToRole="user" />
+        </EntityType>
+        <Association Name="AlarmsToLoc">
+          <End Type="gserverModel.location" Role="location" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gserverModel.alarm" Role="alarm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="alarm">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DataToFiles">
+          <End Type="gserverModel.file" Role="file" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gserverModel.datum" Role="datum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="file">
+              <PropertyRef Name="FileID" />
+            </Principal>
+            <Dependent Role="datum">
+              <PropertyRef Name="FileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LocsToData">
+          <End Type="gserverModel.location" Role="location" Multiplicity="1" />
+          <End Type="gserverModel.datum" Role="datum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="datum">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DevicesToUsers">
+          <End Type="gserverModel.user" Role="user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gserverModel.device" Role="device" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="device">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LocsToFiles">
+          <End Type="gserverModel.location" Role="location" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gserverModel.file" Role="file" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="file">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_locations_UserId">
+          <End Type="gserverModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="gserverModel.location" Role="location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="location">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userslocations_locations">
+          <End Type="gserverModel.location" Role="location" Multiplicity="1" />
+          <End Type="gserverModel.userslocation" Role="userslocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="userslocation">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MsgsToRecips">
+          <End Type="gserverModel.recip" Role="recip" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gserverModel.message" Role="message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="recip">
+              <PropertyRef Name="RecipID" />
+            </Principal>
+            <Dependent Role="message">
+              <PropertyRef Name="RecipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userslocations_users">
+          <End Type="gserverModel.user" Role="user" Multiplicity="1" />
+          <End Type="gserverModel.userslocation" Role="userslocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="userslocation">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="gserverModelStoreContainer" CdmEntityContainer="gserverEntities">
+          <EntitySetMapping Name="adaptors">
+            <EntityTypeMapping TypeName="gserverModel.adaptor">
+              <MappingFragment StoreEntitySet="adaptors">
+                <ScalarProperty Name="AdaptorID" ColumnName="AdaptorID" />
+                <ScalarProperty Name="AdaptorName" ColumnName="AdaptorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="alarms">
+            <EntityTypeMapping TypeName="gserverModel.alarm">
+              <MappingFragment StoreEntitySet="alarms">
+                <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="AlarmAck" ColumnName="AlarmAck" />
+                <ScalarProperty Name="AlarmLog" ColumnName="AlarmLog" />
+                <ScalarProperty Name="AlarmHeader" ColumnName="AlarmHeader" />
+                <ScalarProperty Name="AlarmImportDate" ColumnName="AlarmImportDate" />
+                <ScalarProperty Name="AlarmDateTime" ColumnName="AlarmDateTime" />
+                <ScalarProperty Name="AlarmValue" ColumnName="AlarmValue" />
+                <ScalarProperty Name="AlarmDevice" ColumnName="AlarmDevice" />
+                <ScalarProperty Name="AlarmWindow" ColumnName="AlarmWindow" />
+                <ScalarProperty Name="AlarmAction" ColumnName="AlarmAction" />
+                <ScalarProperty Name="AlarmType" ColumnName="AlarmType" />
+                <ScalarProperty Name="AlarmSource" ColumnName="AlarmSource" />
+                <ScalarProperty Name="AlarmDescription" ColumnName="AlarmDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="apps">
+            <EntityTypeMapping TypeName="gserverModel.app">
+              <MappingFragment StoreEntitySet="apps">
+                <ScalarProperty Name="AppID" ColumnName="AppID" />
+                <ScalarProperty Name="AppInfo" ColumnName="AppInfo" />
+                <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+                <ScalarProperty Name="AppDate" ColumnName="AppDate" />
+                <ScalarProperty Name="AppUser" ColumnName="AppUser" />
+                <ScalarProperty Name="AppThreadID" ColumnName="AppThreadID" />
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+                <ScalarProperty Name="AppType" ColumnName="AppType" />
+                <ScalarProperty Name="AppEvent" ColumnName="AppEvent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="auxtables">
+            <EntityTypeMapping TypeName="gserverModel.auxtable">
+              <MappingFragment StoreEntitySet="auxtable">
+                <ScalarProperty Name="AuxID" ColumnName="AuxID" />
+                <ScalarProperty Name="AuxHeartBeat" ColumnName="AuxHeartBeat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bussensors">
+            <EntityTypeMapping TypeName="gserverModel.bussensor">
+              <MappingFragment StoreEntitySet="bussensors">
+                <ScalarProperty Name="BusSensorID" ColumnName="BusSensorID" />
+                <ScalarProperty Name="BusSensorName" ColumnName="BusSensorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="connections">
+            <EntityTypeMapping TypeName="gserverModel.connection">
+              <MappingFragment StoreEntitySet="connections">
+                <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+                <ScalarProperty Name="ConnectionFld12" ColumnName="ConnectionFld12" />
+                <ScalarProperty Name="ConnectionFld11" ColumnName="ConnectionFld11" />
+                <ScalarProperty Name="ConnectionFld10" ColumnName="ConnectionFld10" />
+                <ScalarProperty Name="ConnectionFld9" ColumnName="ConnectionFld9" />
+                <ScalarProperty Name="ConnectionFld8" ColumnName="ConnectionFld8" />
+                <ScalarProperty Name="ConnectionFld7" ColumnName="ConnectionFld7" />
+                <ScalarProperty Name="ConnectionFld6" ColumnName="ConnectionFld6" />
+                <ScalarProperty Name="ConnectionFld5" ColumnName="ConnectionFld5" />
+                <ScalarProperty Name="ConnectionFld4" ColumnName="ConnectionFld4" />
+                <ScalarProperty Name="ConnectionFld3" ColumnName="ConnectionFld3" />
+                <ScalarProperty Name="ConnectionFld2" ColumnName="ConnectionFld2" />
+                <ScalarProperty Name="ConnectionFld1" ColumnName="ConnectionFld1" />
+                <ScalarProperty Name="ConnectionTotal" ColumnName="ConnectionTotal" />
+                <ScalarProperty Name="ConnectionInfo" ColumnName="ConnectionInfo" />
+                <ScalarProperty Name="ConnectionIP" ColumnName="ConnectionIP" />
+                <ScalarProperty Name="ConnectionIndex" ColumnName="ConnectionIndex" />
+                <ScalarProperty Name="ConnectionBytesSent" ColumnName="ConnectionBytesSent" />
+                <ScalarProperty Name="ConnectionBytesReceived" ColumnName="ConnectionBytesReceived" />
+                <ScalarProperty Name="ConnectionDuration" ColumnName="ConnectionDuration" />
+                <ScalarProperty Name="ConnectionDate" ColumnName="ConnectionDate" />
+                <ScalarProperty Name="ConnectionEvent" ColumnName="ConnectionEvent" />
+                <ScalarProperty Name="ConnectionOrigin" ColumnName="ConnectionOrigin" />
+                <ScalarProperty Name="DeviceSN" ColumnName="DeviceSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="data">
+            <EntityTypeMapping TypeName="gserverModel.datum">
+              <MappingFragment StoreEntitySet="data">
+                <ScalarProperty Name="Data18MODBUS" ColumnName="Data18MODBUS" />
+                <ScalarProperty Name="Data17MODBUS" ColumnName="Data17MODBUS" />
+                <ScalarProperty Name="Data16MODBUS" ColumnName="Data16MODBUS" />
+                <ScalarProperty Name="Data15MODBUS" ColumnName="Data15MODBUS" />
+                <ScalarProperty Name="Data13sdv" ColumnName="Data13sdv" />
+                <ScalarProperty Name="Data13max" ColumnName="Data13max" />
+                <ScalarProperty Name="Data13min" ColumnName="Data13min" />
+                <ScalarProperty Name="Data14av" ColumnName="Data14av" />
+                <ScalarProperty Name="Data13av" ColumnName="Data13av" />
+                <ScalarProperty Name="Data11MODBUS" ColumnName="Data11MODBUS" />
+                <ScalarProperty Name="Data10MODBUS" ColumnName="Data10MODBUS" />
+                <ScalarProperty Name="Data9MODBUS" ColumnName="Data9MODBUS" />
+                <ScalarProperty Name="Data8MODBUS" ColumnName="Data8MODBUS" />
+                <ScalarProperty Name="Data7MODBUS" ColumnName="Data7MODBUS" />
+                <ScalarProperty Name="Data6MODBUS" ColumnName="Data6MODBUS" />
+                <ScalarProperty Name="Data5MODBUS" ColumnName="Data5MODBUS" />
+                <ScalarProperty Name="Data4MODBUS" ColumnName="Data4MODBUS" />
+                <ScalarProperty Name="Data3MODBUS" ColumnName="Data3MODBUS" />
+                <ScalarProperty Name="Data2av" ColumnName="Data2av" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="DataInterval" ColumnName="DataInterval" />
+                <ScalarProperty Name="DataDateTime" ColumnName="DataDateTime" />
+                <ScalarProperty Name="DataIndex" ColumnName="DataIndex" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dbversions">
+            <EntityTypeMapping TypeName="gserverModel.dbversion">
+              <MappingFragment StoreEntitySet="dbversions">
+                <ScalarProperty Name="DBVersionID" ColumnName="DBVersionID" />
+                <ScalarProperty Name="DBVersionLog" ColumnName="DBVersionLog" />
+                <ScalarProperty Name="DBVersionText" ColumnName="DBVersionText" />
+                <ScalarProperty Name="DBVersionExecuted" ColumnName="DBVersionExecuted" />
+                <ScalarProperty Name="DBVersionProcessed" ColumnName="DBVersionProcessed" />
+                <ScalarProperty Name="DBVersionUser" ColumnName="DBVersionUser" />
+                <ScalarProperty Name="DBVersionEndDateTime" ColumnName="DBVersionEndDateTime" />
+                <ScalarProperty Name="DBVersionRecentDateTime" ColumnName="DBVersionRecentDateTime" />
+                <ScalarProperty Name="DBVersionBeginDateTime" ColumnName="DBVersionBeginDateTime" />
+                <ScalarProperty Name="DBVersionNumber" ColumnName="DBVersionNumber" />
+                <ScalarProperty Name="DBVersionName" ColumnName="DBVersionName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="devices">
+            <EntityTypeMapping TypeName="gserverModel.device">
+              <MappingFragment StoreEntitySet="devices">
+                <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+                <ScalarProperty Name="DeviceData" ColumnName="DeviceData" />
+                <ScalarProperty Name="DeviceBuffer" ColumnName="DeviceBuffer" />
+                <ScalarProperty Name="DeviceInfo" ColumnName="DeviceInfo" />
+                <ScalarProperty Name="DeviceCreationDate" ColumnName="DeviceCreationDate" />
+                <ScalarProperty Name="DeviceTimeLimit" ColumnName="DeviceTimeLimit" />
+                <ScalarProperty Name="DeviceTime" ColumnName="DeviceTime" />
+                <ScalarProperty Name="DeviceBytesSentLimit" ColumnName="DeviceBytesSentLimit" />
+                <ScalarProperty Name="DeviceBytesSent" ColumnName="DeviceBytesSent" />
+                <ScalarProperty Name="DeviceBytesReceivedLimit" ColumnName="DeviceBytesReceivedLimit" />
+                <ScalarProperty Name="DeviceBytesReceived" ColumnName="DeviceBytesReceived" />
+                <ScalarProperty Name="DeviceField8" ColumnName="DeviceField8" />
+                <ScalarProperty Name="DeviceField7" ColumnName="DeviceField7" />
+                <ScalarProperty Name="DeviceField6" ColumnName="DeviceField6" />
+                <ScalarProperty Name="DeviceField5" ColumnName="DeviceField5" />
+                <ScalarProperty Name="DeviceField4" ColumnName="DeviceField4" />
+                <ScalarProperty Name="DeviceField3" ColumnName="DeviceField3" />
+                <ScalarProperty Name="DeviceField2" ColumnName="DeviceField2" />
+                <ScalarProperty Name="DeviceField1" ColumnName="DeviceField1" />
+                <ScalarProperty Name="DeviceValidUntil" ColumnName="DeviceValidUntil" />
+                <ScalarProperty Name="DeviceAttr" ColumnName="DeviceAttr" />
+                <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+                <ScalarProperty Name="DeviceSN" ColumnName="DeviceSN" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="deviceslocations">
+            <EntityTypeMapping TypeName="gserverModel.deviceslocation">
+              <MappingFragment StoreEntitySet="deviceslocations">
+                <ScalarProperty Name="LocationSN" ColumnName="LocationSN" />
+                <ScalarProperty Name="DeviceSN" ColumnName="DeviceSN" />
+                <ScalarProperty Name="DevIdLocId" ColumnName="DevIdLocId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="equipments">
+            <EntityTypeMapping TypeName="gserverModel.equipment">
+              <MappingFragment StoreEntitySet="equipments">
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="EquipmentInfo" ColumnName="EquipmentInfo" />
+                <ScalarProperty Name="InventoryNumber" ColumnName="InventoryNumber" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="EquipmentCategoryID" ColumnName="EquipmentCategoryID" />
+                <ScalarProperty Name="EquipmentModelID" ColumnName="EquipmentModelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="equipmentusages">
+            <EntityTypeMapping TypeName="gserverModel.equipmentusage">
+              <MappingFragment StoreEntitySet="equipmentusages">
+                <ScalarProperty Name="EquipmentUsageID" ColumnName="EquipmentUsageID" />
+                <ScalarProperty Name="EquipmentUsageCode" ColumnName="EquipmentUsageCode" />
+                <ScalarProperty Name="EquipmentUsageName" ColumnName="EquipmentUsageName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="files">
+            <EntityTypeMapping TypeName="gserverModel.file">
+              <MappingFragment StoreEntitySet="files">
+                <ScalarProperty Name="FileID" ColumnName="FileID" />
+                <ScalarProperty Name="FileLog" ColumnName="FileLog" />
+                <ScalarProperty Name="FileHeader" ColumnName="FileHeader" />
+                <ScalarProperty Name="FileRecords" ColumnName="FileRecords" />
+                <ScalarProperty Name="FileImportDate" ColumnName="FileImportDate" />
+                <ScalarProperty Name="FileDataDateEnd" ColumnName="FileDataDateEnd" />
+                <ScalarProperty Name="FileDataDateStart" ColumnName="FileDataDateStart" />
+                <ScalarProperty Name="FileDate" ColumnName="FileDate" />
+                <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+                <ScalarProperty Name="FileSN" ColumnName="FileSN" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="filters">
+            <EntityTypeMapping TypeName="gserverModel.filter">
+              <MappingFragment StoreEntitySet="filters">
+                <ScalarProperty Name="FilterID" ColumnName="FilterID" />
+                <ScalarProperty Name="FilterDateTo" ColumnName="FilterDateTo" />
+                <ScalarProperty Name="FilterDateFrom" ColumnName="FilterDateFrom" />
+                <ScalarProperty Name="FilterValue2" ColumnName="FilterValue2" />
+                <ScalarProperty Name="FilterComparison2" ColumnName="FilterComparison2" />
+                <ScalarProperty Name="FilterOperator" ColumnName="FilterOperator" />
+                <ScalarProperty Name="FilterValue1" ColumnName="FilterValue1" />
+                <ScalarProperty Name="FilterComparison1" ColumnName="FilterComparison1" />
+                <ScalarProperty Name="EquipmentUsageID" ColumnName="EquipmentUsageID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locationequipments">
+            <EntityTypeMapping TypeName="gserverModel.locationequipment">
+              <MappingFragment StoreEntitySet="locationequipment">
+                <ScalarProperty Name="LocationEquipID" ColumnName="LocationEquipID" />
+                <ScalarProperty Name="LocationEquipDateRemoved" ColumnName="LocationEquipDateRemoved" />
+                <ScalarProperty Name="LocationEquipDateAdded" ColumnName="LocationEquipDateAdded" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+                <ScalarProperty Name="EquipmentUsageID" ColumnName="EquipmentUsageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locationflags">
+            <EntityTypeMapping TypeName="gserverModel.locationflag">
+              <MappingFragment StoreEntitySet="locationflags">
+                <ScalarProperty Name="LocationFlagID" ColumnName="LocationFlagID" />
+                <ScalarProperty Name="LocationFlagColor" ColumnName="LocationFlagColor" />
+                <ScalarProperty Name="LocationFlagCode" ColumnName="LocationFlagCode" />
+                <ScalarProperty Name="LocationFlagName" ColumnName="LocationFlagName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locations">
+            <EntityTypeMapping TypeName="gserverModel.location">
+              <MappingFragment StoreEntitySet="locations">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="DeviceSN" ColumnName="DeviceSN" />
+                <ScalarProperty Name="LocationSN" ColumnName="LocationSN" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationChannels" ColumnName="LocationChannels" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="Graphic" ColumnName="Graphic" />
+                <ScalarProperty Name="LocationInfo" ColumnName="LocationInfo" />
+                <ScalarProperty Name="LocationPath" ColumnName="LocationPath" />
+                <ScalarProperty Name="LocationFlagDate" ColumnName="LocationFlagDate" />
+                <ScalarProperty Name="LocationFlagID" ColumnName="LocationFlagID" />
+                <ScalarProperty Name="LocationStatusDate" ColumnName="LocationStatusDate" />
+                <ScalarProperty Name="LocationComStatusID" ColumnName="LocationComStatusID" />
+                <ScalarProperty Name="LocationStatusID" ColumnName="LocationStatusID" />
+                <ScalarProperty Name="LocationUsageID" ColumnName="LocationUsageID" />
+                <ScalarProperty Name="LocationSiteName" ColumnName="LocationSiteName" />
+                <ScalarProperty Name="LocationDataPhone" ColumnName="LocationDataPhone" />
+                <ScalarProperty Name="LocationPhone" ColumnName="LocationPhone" />
+                <ScalarProperty Name="LocationLatitude" ColumnName="LocationLatitude" />
+                <ScalarProperty Name="LocationLongitude" ColumnName="LocationLongitude" />
+                <ScalarProperty Name="LocationAddress" ColumnName="LocationAddress" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="locationstatuses">
+            <EntityTypeMapping TypeName="gserverModel.locationstatus">
+              <MappingFragment StoreEntitySet="locationstatuses">
+                <ScalarProperty Name="LocationStatusID" ColumnName="LocationStatusID" />
+                <ScalarProperty Name="LocationStatusCode" ColumnName="LocationStatusCode" />
+                <ScalarProperty Name="LocationStatusName" ColumnName="LocationStatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="measbussensors">
+            <EntityTypeMapping TypeName="gserverModel.measbussensor">
+              <MappingFragment StoreEntitySet="measbussensors">
+                <ScalarProperty Name="MeasBusSensorID" ColumnName="MeasBusSensorID" />
+                <ScalarProperty Name="BusSensorID" ColumnName="BusSensorID" />
+                <ScalarProperty Name="MeasurementID" ColumnName="MeasurementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meassensors">
+            <EntityTypeMapping TypeName="gserverModel.meassensor">
+              <MappingFragment StoreEntitySet="meassensors">
+                <ScalarProperty Name="MeasSensorID" ColumnName="MeasSensorID" />
+                <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+                <ScalarProperty Name="MeasurementID" ColumnName="MeasurementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="measunits">
+            <EntityTypeMapping TypeName="gserverModel.measunit">
+              <MappingFragment StoreEntitySet="measunits">
+                <ScalarProperty Name="MeasUnitID" ColumnName="MeasUnitID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="MeasurementID" ColumnName="MeasurementID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="measurements">
+            <EntityTypeMapping TypeName="gserverModel.measurement">
+              <MappingFragment StoreEntitySet="measurements">
+                <ScalarProperty Name="MeasurementID" ColumnName="MeasurementID" />
+                <ScalarProperty Name="MeasurementName" ColumnName="MeasurementName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messages">
+            <EntityTypeMapping TypeName="gserverModel.message">
+              <MappingFragment StoreEntitySet="messages">
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+                <ScalarProperty Name="MessageLog" ColumnName="MessageLog" />
+                <ScalarProperty Name="MessageDateTimeRetry" ColumnName="MessageDateTimeRetry" />
+                <ScalarProperty Name="MessageDateTime" ColumnName="MessageDateTime" />
+                <ScalarProperty Name="MessageSMSStatus" ColumnName="MessageSMSStatus" />
+                <ScalarProperty Name="MessageEmailStatus" ColumnName="MessageEmailStatus" />
+                <ScalarProperty Name="AlarmID" ColumnName="AlarmID" />
+                <ScalarProperty Name="RecipID" ColumnName="RecipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="recips">
+            <EntityTypeMapping TypeName="gserverModel.recip">
+              <MappingFragment StoreEntitySet="recips">
+                <ScalarProperty Name="RecipID" ColumnName="RecipID" />
+                <ScalarProperty Name="RecipLog" ColumnName="RecipLog" />
+                <ScalarProperty Name="RecipStatus" ColumnName="RecipStatus" />
+                <ScalarProperty Name="RecipSMS" ColumnName="RecipSMS" />
+                <ScalarProperty Name="RecipEmail" ColumnName="RecipEmail" />
+                <ScalarProperty Name="RecipDateTime" ColumnName="RecipDateTime" />
+                <ScalarProperty Name="RecipName" ColumnName="RecipName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sensadaptors">
+            <EntityTypeMapping TypeName="gserverModel.sensadaptor">
+              <MappingFragment StoreEntitySet="sensadaptors">
+                <ScalarProperty Name="SensAdaptorID" ColumnName="SensAdaptorID" />
+                <ScalarProperty Name="AdaptorID" ColumnName="AdaptorID" />
+                <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sensors">
+            <EntityTypeMapping TypeName="gserverModel.sensor">
+              <MappingFragment StoreEntitySet="sensors">
+                <ScalarProperty Name="SensorID" ColumnName="SensorID" />
+                <ScalarProperty Name="SensorName" ColumnName="SensorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sites">
+            <EntityTypeMapping TypeName="gserverModel.site">
+              <MappingFragment StoreEntitySet="sites">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="siteName" ColumnName="siteName" />
+                <ScalarProperty Name="siteId" ColumnName="siteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="units">
+            <EntityTypeMapping TypeName="gserverModel.unit">
+              <MappingFragment StoreEntitySet="units">
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="updates">
+            <EntityTypeMapping TypeName="gserverModel.update">
+              <MappingFragment StoreEntitySet="updates">
+                <ScalarProperty Name="UpdateID" ColumnName="UpdateID" />
+                <ScalarProperty Name="UpdateField2" ColumnName="UpdateField2" />
+                <ScalarProperty Name="UpdateField1" ColumnName="UpdateField1" />
+                <ScalarProperty Name="UpdateInfo" ColumnName="UpdateInfo" />
+                <ScalarProperty Name="UpdateStatusDate" ColumnName="UpdateStatusDate" />
+                <ScalarProperty Name="UpdateCreationDate" ColumnName="UpdateCreationDate" />
+                <ScalarProperty Name="UpdateStatus" ColumnName="UpdateStatus" />
+                <ScalarProperty Name="UpdateType" ColumnName="UpdateType" />
+                <ScalarProperty Name="UpdateName" ColumnName="UpdateName" />
+                <ScalarProperty Name="DeviceSN" ColumnName="DeviceSN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="gserverModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserAttr" ColumnName="UserAttr" />
+                <ScalarProperty Name="UserInfo" ColumnName="UserInfo" />
+                <ScalarProperty Name="UserField4" ColumnName="UserField4" />
+                <ScalarProperty Name="UserField3" ColumnName="UserField3" />
+                <ScalarProperty Name="UserField2" ColumnName="UserField2" />
+                <ScalarProperty Name="UserField1" ColumnName="UserField1" />
+                <ScalarProperty Name="UserCreationDate" ColumnName="UserCreationDate" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="UserTel" ColumnName="UserTel" />
+                <ScalarProperty Name="UserCountry" ColumnName="UserCountry" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userslocations">
+            <EntityTypeMapping TypeName="gserverModel.userslocation">
+              <MappingFragment StoreEntitySet="userslocations">
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserLocationId" ColumnName="UserLocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

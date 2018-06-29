@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="12ffda5bedff4837983054652870cff2" Name="Diagram1">
+        <EntityTypeShape EntityType="gserverModel.adaptor" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="gserverModel.alarm" Width="1.5" PointX="5.25" PointY="21" IsExpanded="false" />
+        <EntityTypeShape EntityType="gserverModel.app" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gserverModel.auxtable" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gserverModel.bussensor" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="gserverModel.connection" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gserverModel.datum" Width="1.5" PointX="7.5" PointY="7.625" />
+        <EntityTypeShape EntityType="gserverModel.dbversion" Width="1.5" PointX="9.75" PointY="7.75" />
+        <EntityTypeShape EntityType="gserverModel.device" Width="1.5" PointX="3" PointY="16" />
+        <EntityTypeShape EntityType="gserverModel.deviceslocation" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gserverModel.equipment" Width="1.5" PointX="11.75" PointY="3.75" />
+        <EntityTypeShape EntityType="gserverModel.equipmentusage" Width="1.5" PointX="11.75" PointY="7.75" />
+        <EntityTypeShape EntityType="gserverModel.file" Width="1.5" PointX="5.25" PointY="6.875" />
+        <EntityTypeShape EntityType="gserverModel.filter" Width="1.5" PointX="9.75" PointY="11.75" />
+        <EntityTypeShape EntityType="gserverModel.locationequipment" Width="1.5" PointX="11.75" PointY="10.75" />
+        <EntityTypeShape EntityType="gserverModel.locationflag" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gserverModel.location" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="gserverModel.locationstatus" Width="1.5" PointX="13.75" PointY="3.75" />
+        <EntityTypeShape EntityType="gserverModel.measbussensor" Width="1.5" PointX="13.75" PointY="6.75" />
+        <EntityTypeShape EntityType="gserverModel.meassensor" Width="1.5" PointX="13.75" PointY="9.75" />
+        <EntityTypeShape EntityType="gserverModel.measunit" Width="1.5" PointX="13.75" PointY="12.75" />
+        <EntityTypeShape EntityType="gserverModel.measurement" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="gserverModel.message" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="gserverModel.recip" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="gserverModel.sensadaptor" Width="1.5" PointX="15.75" PointY="3.75" />
+        <EntityTypeShape EntityType="gserverModel.sensor" Width="1.5" PointX="5.75" PointY="15.75" />
+        <EntityTypeShape EntityType="gserverModel.site" Width="1.5" PointX="15.75" PointY="6.75" />
+        <EntityTypeShape EntityType="gserverModel.unit" Width="1.5" PointX="7.75" PointY="15.75" />
+        <EntityTypeShape EntityType="gserverModel.update" Width="1.5" PointX="15.75" PointY="9.75" />
+        <EntityTypeShape EntityType="gserverModel.user" Width="1.5" PointX="0.75" PointY="12.375" />
+        <EntityTypeShape EntityType="gserverModel.userslocation" Width="1.5" PointX="5.25" PointY="12.125" />
+        <AssociationConnector Association="gserverModel.AlarmsToLoc" />
+        <AssociationConnector Association="gserverModel.DataToFiles" />
+        <AssociationConnector Association="gserverModel.LocsToData" />
+        <AssociationConnector Association="gserverModel.DevicesToUsers" />
+        <AssociationConnector Association="gserverModel.LocsToFiles" />
+        <AssociationConnector Association="gserverModel.FK_locations_UserId" />
+        <AssociationConnector Association="gserverModel.FK_userslocations_locations" />
+        <AssociationConnector Association="gserverModel.MsgsToRecips" />
+        <AssociationConnector Association="gserverModel.FK_userslocations_users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
